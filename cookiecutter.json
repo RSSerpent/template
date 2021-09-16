@@ -1,3 +1,6 @@
 {
-    "name": ""
+    "plugin": "rsserpent-plugin-xxx",
+    "username": "queensferryme",
+    "link": "https://github.com/{{ cookiecutter.username }}",
+    "email": "{{ cookiecutter.username }}@example.com"
 }
