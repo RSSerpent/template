@@ -28,9 +28,7 @@ jobs:
           key: ${{ hashFiles('**/.pre-commit-config.yaml') }}
       - uses: actions/cache@v2
         with:
-          path: |
-            ~/.cache/pip
-            rsserpent-plugin-xxx/.venv
+          path: ~/.cache/pypoetry
           key: ${{ hashFiles('**/pyproject.toml') }}
       - name: "Setup Cookiecutter"
         run: |
@@ -39,7 +37,6 @@ jobs:
       - name: "Setup Poetry"
         run: |
           pip install --user poetry
-          poetry config virtualenvs.in-project true
       - name: "Generate Project from Template"
         run: |
           cookiecutter --no-input gh:rsserpent/template
