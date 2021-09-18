@@ -1,0 +1,42 @@
+name: Test
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/test.yaml'
+      - '{{ cookiecutter.plugin }}/**'
+      - 'cookiecutter.json'
+      - 'hooks/**'
+  push:
+    paths:
+      - '.github/workflows/test.yaml'
+      - '{{ cookiecutter.plugin }}/**'
+      - 'cookiecutter.json'
+      - 'hooks/**'
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: "Setup Cookiecutter"
+        run: |
+          pip install --upgrade pip
+          pip install --user cookiecutter
+      - name: "Setup Poetry"
+        run: |
+          pip install --user poetry
+          poetry config virtualenvs.in-project true
+      - name: "Generate Project from Template"
+        run: |
+          cookiecutter --no-input gh:rsserpent/template
+      - name: "Run pre-commit Hooks"
+        run: |
+          cd rsserpent-plugin-xxx
+          poetry run pre-commit run --all-files
+      - name: "Run Tests"
+        run: |
+          cd rsserpent-plugin-xxx
+          poetry run pytest --cov --cov-report=xml -n auto
