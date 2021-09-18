@@ -8,7 +8,7 @@ plugin = Plugin(
     author=Persona(
         name="{{ cookiecutter.username }}",
         link="{{ cookiecutter.link }}",
-        email="{{ cookiecutter.email }}"
+        email="{{ cookiecutter.email }}",
     ),
     prefix="/{{ cookiecutter.plugin.removeprefix('rsserpent-plugin-') }}",
     repository="https://github.com/{{ cookiecutter.username}}/{{ cookiecutter.plugin }}",

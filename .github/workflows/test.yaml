@@ -18,9 +18,20 @@ jobs:
   run:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: 3.9
+      - uses: actions/cache@v2
+        with:
+          path: ~/.cache/pre-commit
+          key: ${{ hashFiles('**/.pre-commit-config.yaml') }}
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/.cache/pip
+            rsserpent-plugin-xxx/.venv
+          key: ${{ hashFiles('**/pyproject.toml') }}
       - name: "Setup Cookiecutter"
         run: |
           pip install --upgrade pip
@@ -35,6 +46,7 @@ jobs:
       - name: "Run pre-commit Hooks"
         run: |
           cd rsserpent-plugin-xxx
+          git add --all
           poetry run pre-commit run --all-files
       - name: "Run Tests"
         run: |
