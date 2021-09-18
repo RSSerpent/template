@@ -1,4 +1,4 @@
-# Template
+# Template 🍪
 
 Scaffolding an RSSerpent plugin project with [`cookiecutter`](https://cookiecutter.readthedocs.io) in seconds!
 
