@@ -1,0 +1,18 @@
+# IDE
+.idea/
+.vscode/
+
+# Misc
+.env
+.envrc
+
+# Test
+.coverage
+.pytest_cache/
+coverage.xml
+
+# Toolchain
+.mypy_cache/
+.python-version
+__pycache__/
+dist/
