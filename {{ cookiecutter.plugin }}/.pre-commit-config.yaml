@@ -52,7 +52,9 @@ repos:
           - darglint
           - flake8-bugbear
           - flake8-builtins
+          - flake8-comprehensions
           - flake8-datetimez
+          - flake8-debugger
           - flake8-docstrings
           - flake8-eradicate
           - flake8-print
