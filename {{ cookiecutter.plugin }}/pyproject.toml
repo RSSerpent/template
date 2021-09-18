@@ -1,8 +1,12 @@
 [tool.poetry]
 name = "{{ cookiecutter.plugin }}"
 version = "0.1.0"
-description = ""
+
 authors = ["{{ cookiecutter.username }} <{{ cookiecutter.email }}>"]
+description = "{{ cookiecutter.description }}"
+keywords = ["rss"]
+license = "MIT"
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.6.2"
