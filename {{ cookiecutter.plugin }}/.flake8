@@ -1,8 +1,6 @@
 [flake8]
 count = true
 ignore =
-    # A003: class attribute "xxx" is shadowing a python builtin
-    A003,
     # D100: missing docstring in public module
     D100,
     # D104: missing docstring in public package

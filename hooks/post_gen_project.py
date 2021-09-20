@@ -1,9 +1,9 @@
 #!/usr/bin/env python
 
-import os
+import subprocess
 
 
-os.system("git init")
-os.system("poetry install")
-os.system("poetry run pre-commit install")
-os.system("poetry run pre-commit autoupdate")
+subprocess.run(["git", "init"])
+subprocess.run(["poetry", "install"])
+subprocess.run(["poetry", "run", "pre-commit", "install", "--install-hooks", "-t", "pre-commit", "-t", "commit-msg"])
+subprocess.run(["poetry", "run", "pre-commit", "autoupdate"])
