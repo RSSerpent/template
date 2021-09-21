@@ -19,6 +19,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     env:
       PRE_COMMIT_HOME: .pre-commit
+      PYTHONIOENCODING: utf-8
     strategy:
       matrix:
         os: [macos-latest, windows-latest, ubuntu-latest]
@@ -30,11 +31,11 @@ jobs:
           python-version: 3.9
       - uses: actions/cache@v2
         with:
-          path: rsserpent-plugin-xxx/.pre-commit
+          path: ~/rsserpent-plugin-xxx/.pre-commit
           key: ${{ matrix.os }}-${{ hashFiles('**/.pre-commit-config.yaml') }}
       - uses: actions/cache@v2
         with:
-          path: rsserpent-plugin-xxx/.venv
+          path: ~/rsserpent-plugin-xxx/.venv
           key: ${{ matrix.os }}-${{ hashFiles('**/pyproject.toml') }}
       - name: "Setup Cookiecutter & Poetry"
         run: |
@@ -42,13 +43,14 @@ jobs:
           pip install cookiecutter poetry
           poetry config virtualenvs.in-project true
       - name: "Generate Project from Template"
-        run: cookiecutter -f --no-input gh:rsserpent/template
+        run: cookiecutter -f --no-input gh:rsserpent/template -o ~
       - name: "Run pre-commit Hooks"
         run: |
-          cd rsserpent-plugin-xxx
+          cd ~/rsserpent-plugin-xxx
+          echo ".pre-commit" >> .gitignore
           git add --all
           poetry run pre-commit run --all-files
       - name: "Run Tests"
         run: |
-          cd rsserpent-plugin-xxx
+          cd ~/rsserpent-plugin-xxx
           poetry run pytest --cov -n auto
