@@ -9,3 +9,4 @@ updates:
     directory: "/{{ cookiecutter.plugin }}"
     schedule:
       interval: "weekly"
+    versioning-strategy: lockfile-only
