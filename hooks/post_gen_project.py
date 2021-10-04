@@ -6,7 +6,9 @@ from tempfile import gettempdir
 
 
 subprocess.run(["git", "init"])
-if not os.getcwd().startswith(os.path.realpath(gettempdir())):
+curdir = os.path.normcase(os.getcwd())
+tmpdir = os.path.normcase(os.path.realpath(gettempdir()))
+if not curdir.startswith(tmpdir):
     subprocess.run(["poetry", "install"])
     subprocess.run(["poetry", "run", "pre-commit", "install", "-t", "pre-commit", "-t", "commit-msg"])
     subprocess.run(["poetry", "run", "pre-commit", "autoupdate"])
