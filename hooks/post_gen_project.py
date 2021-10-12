@@ -11,4 +11,3 @@ tmpdir = os.path.normcase(os.path.realpath(gettempdir()))
 if not curdir.startswith(tmpdir):
     subprocess.run(["poetry", "install"])
     subprocess.run(["poetry", "run", "pre-commit", "install", "-t", "pre-commit", "-t", "commit-msg"])
-    subprocess.run(["poetry", "run", "pre-commit", "autoupdate"])

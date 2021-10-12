@@ -1,3 +1,0 @@
-pre-commit==2.15.0
-pytest==6.2.5
-rsserpent==0.1.3

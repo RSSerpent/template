@@ -1,3 +1,6 @@
+ci:
+  autofix_commit_msg: "ci: pre-commit auto fixes"
+  autoupdate_commit_msg: "ci: pre-commit auto update"
 default_stages: [commit]
 fail_fast: true
 repos:
@@ -13,7 +16,7 @@ repos:
         name: Check Typos
         args: []
   - repo: https://github.com/commitizen-tools/commitizen
-    rev: v2.19.0
+    rev: v2.20.0
     hooks:
       - id: commitizen
         name: Check Commit Message
