@@ -30,11 +30,11 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.9
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/rsserpent-plugin-xxx/.pre-commit
           key: ${{ matrix.os }}-${{ hashFiles('**/.pre-commit-config.yaml') }}
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           path: ~/rsserpent-plugin-xxx/.venv
           key: ${{ matrix.os }}-${{ hashFiles('**/pyproject.toml') }}
